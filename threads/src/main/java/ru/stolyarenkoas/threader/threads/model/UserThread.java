@@ -1,25 +1,21 @@
 package ru.stolyarenkoas.threader.threads.model;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 
-import java.util.UUID;
+import javax.annotation.Nullable;
 
 /**
  * Text thread provided by a user.
  */
-@Getter
-@ToString
-@RequiredArgsConstructor
+@Data
 public class UserThread {
 
     /**
      * Unique identifier of a user thread.
      */
-    @NonNull
-    private final String id = UUID.randomUUID().toString();
+    @Nullable
+    private String id;
 
     /**
      * Text of a user thread.

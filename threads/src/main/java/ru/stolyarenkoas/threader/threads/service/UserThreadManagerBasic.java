@@ -7,7 +7,9 @@ import ru.stolyarenkoas.threader.threads.repository.api.UserThreadRepository;
 import ru.stolyarenkoas.threader.threads.service.api.UserThreadManager;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Basic implementation of a service to manage user threads.
@@ -24,13 +26,26 @@ public class UserThreadManagerBasic implements UserThreadManager {
     @Nonnull
     private final UserThreadRepository userThreadRepository;
 
+    @Nonnull
     @Override
-    public void create(@Nonnull UserThread userThread) {
-        userThreadRepository.create(userThread);
+    public String create(@Nonnull final UserThread userThread) {
+        return userThreadRepository.create(userThread);
+    }
+
+    @Nullable
+    @Override
+    public UserThread get(@Nonnull final String id) {
+        return userThreadRepository.get(id);
+    }
+
+    @Nonnull
+    @Override
+    public Set<UserThread> getByUserId(@Nonnull final String userId) {
+        return userThreadRepository.getByUserId(userId);
     }
 
     @Override
-    public void delete(@Nonnull String userThreadId) {
+    public void delete(@Nonnull final String userThreadId) {
         userThreadRepository.delete(userThreadId);
     }
 
