@@ -2,7 +2,13 @@ package ru.stolyarenkoas.threader.threads.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import ru.stolyarenkoas.threader.threads.controller.exception.UserHasNoUserThreadsException;
 import ru.stolyarenkoas.threader.threads.controller.exception.UserThreadNotFoundException;
 import ru.stolyarenkoas.threader.threads.model.UserThread;
@@ -35,6 +41,7 @@ public class UserThreadController {
      * @param userThread user thread data.
      * @return created user thread.
      */
+    @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(method = RequestMethod.POST, path = "/create")
     public UserThread create(@RequestBody @Nonnull UserThread userThread) {
         final String userThreadId = userThreadManager.create(userThread);
