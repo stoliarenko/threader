@@ -1,5 +1,6 @@
 package ru.stolyarenkoas.threader.threads.controller.advice;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -24,6 +25,7 @@ public class UserThreadControllerAdvice {
      * @param exception corresponding exception.
      * @return exception message.
      */
+    @Hidden
     @ResponseBody
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler({UserThreadNotFoundException.class, UserHasNoUserThreadsException.class})
