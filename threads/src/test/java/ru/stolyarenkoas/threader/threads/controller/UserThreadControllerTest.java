@@ -11,10 +11,7 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import ru.stolyarenkoas.threader.threads.model.UserThread;
 import ru.stolyarenkoas.threader.threads.service.api.UserThreadManager;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 import static org.hamcrest.Matchers.emptyString;
@@ -30,7 +27,6 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
