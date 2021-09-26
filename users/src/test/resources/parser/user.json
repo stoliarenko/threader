@@ -1,0 +1,5 @@
+{
+  "id": "Test-User-Identifier",
+  "name": "Test user name",
+  "roles": ["COMMON","ADMINISTRATOR"]
+}

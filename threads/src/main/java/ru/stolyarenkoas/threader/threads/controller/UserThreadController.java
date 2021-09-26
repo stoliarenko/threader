@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,13 +60,13 @@ public class UserThreadController {
                     description = "User thread successfully created.",
                     responseCode = "201",
                     content = @Content(
-                            mediaType = "application/json",
+                            mediaType = MediaType.APPLICATION_JSON_VALUE,
                             schema = @Schema(implementation = UserThread.class)
                     )
             ),
             @ApiResponse(
                     description = "Unable to create a user thread.",
-                    responseCode = "400", content = @Content(mediaType = "text/plain")
+                    responseCode = "400", content = @Content(mediaType = MediaType.TEXT_PLAIN_VALUE)
             )
     })
     @ResponseStatus(HttpStatus.CREATED)
@@ -89,13 +90,13 @@ public class UserThreadController {
                     description = "Returns user thread that has given id.",
                     responseCode = "200",
                     content = @Content(
-                            mediaType = "application/json",
+                            mediaType = MediaType.APPLICATION_JSON_VALUE,
                             schema = @Schema(implementation = UserThread.class)
                     )
             ),
             @ApiResponse(
                     description = "User thread with given id does not exist.",
-                    responseCode = "404", content = @Content(mediaType = "text/plain")
+                    responseCode = "404", content = @Content(mediaType = MediaType.TEXT_PLAIN_VALUE)
             )
     })
     @Parameter(name = "id", description = "Identifier of a user thread")
@@ -122,13 +123,13 @@ public class UserThreadController {
                     description = "Returns user thread with given id.",
                     responseCode = "200",
                     content = @Content(
-                            mediaType = "application/json",
+                            mediaType = MediaType.APPLICATION_JSON_VALUE,
                             array = @ArraySchema(schema = @Schema(implementation = UserThread.class))
                     )
             ),
             @ApiResponse(
                     description = "User with given id does not have any user threads.",
-                    responseCode = "404", content = @Content(mediaType = "text/plain")
+                    responseCode = "404", content = @Content(mediaType = MediaType.TEXT_PLAIN_VALUE)
             )
     })
     @Parameter(name = "userId", description = "Identifier of a user.")
@@ -155,7 +156,7 @@ public class UserThreadController {
             ),
             @ApiResponse(
                     description = "User thread with given id does not exist.",
-                    responseCode = "404", content = @Content(mediaType = "text/plain")
+                    responseCode = "404", content = @Content(mediaType = MediaType.TEXT_PLAIN_VALUE)
             )
     })
     @Parameter(name = "userThreadId", description = "Identifier of a user thread")

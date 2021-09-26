@@ -1,8 +1,9 @@
-package ru.stolyarenkoas.threader.threads.controller;
+package ru.stolyarenkoas.threader.threads.parser;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import java.io.IOException;
  * Tests for serialization/deserialization of a {@link UserThread}.
  */
 @JsonTest
+@Tag("parser")
 @DisplayName("User thread JSON parsing tests")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class UserThreadParserTest {
@@ -66,15 +68,15 @@ class UserThreadParserTest {
     void testDeserialize() throws IOException {
         final ClassPathResource jsonResource = new ClassPathResource("/parser/user-thread.json");
         final String userThreadJson = new String(jsonResource.getInputStream().readAllBytes());
-        final ObjectContent<UserThread> parsedUserThreadContent = jacksonTester.parse(userThreadJson);
-
-        //noinspection AssertBetweenInconvertibleTypes AssertJ can do that.
-        Assertions.assertThat(parsedUserThreadContent).isEqualTo(userThread);
 
         final UserThread parsedUserThread = jacksonTester.parseObject(userThreadJson);
         Assertions.assertThat(parsedUserThread.getId()).isEqualTo(userThreadId);
         Assertions.assertThat(parsedUserThread.getText()).isEqualTo(userThreadText);
         Assertions.assertThat(parsedUserThread.getUser()).isEqualTo(userThreadAuthor);
+
+        final ObjectContent<UserThread> parsedUserThreadContent = jacksonTester.parse(userThreadJson);
+        //noinspection AssertBetweenInconvertibleTypes AssertJ can do that.
+        Assertions.assertThat(parsedUserThreadContent).isEqualTo(userThread);
     }
 
 }
