@@ -47,7 +47,9 @@ class UserParserTest {
 
     @BeforeAll
     void prepareUser() {
-        testUser = new User(userName, userRoles);
+        testUser = new User();
+        testUser.setName(userName);
+        testUser.setRoles(userRoles);
         testUser.setId(userIdentifier);
     }
 

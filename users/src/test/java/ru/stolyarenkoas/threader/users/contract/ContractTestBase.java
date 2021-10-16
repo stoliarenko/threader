@@ -41,7 +41,9 @@ public abstract class ContractTestBase {
     public void setUp() {
         RestAssuredMockMvc.standaloneSetup(UserController.class);
 
-        final User stubUser = new User("user-name", Collections.singletonList(Role.COMMON));
+        final User stubUser = new User();
+        stubUser.setName("user-name");
+        stubUser.setRoles(Collections.singletonList(Role.COMMON));
         stubUser.setId("user-id");
         Mockito.when(userService.getBySessionId("1")).thenReturn(stubUser);
     }

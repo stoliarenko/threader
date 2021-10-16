@@ -10,7 +10,7 @@ import javax.annotation.Nonnull;
 public class UserThreadNotFoundException extends RuntimeException {
 
     /**
-     * Constructor that sets message about missing parameter.
+     * Constructor that sets a message about missing parameter.
      *
      * @param userThreadId identifier that is not found.
      */
